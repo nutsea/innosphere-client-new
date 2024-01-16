@@ -198,6 +198,10 @@ function App() {
         }
     }
 
+    const handleScrollPos = (value) => {
+        setScrollPos(value)
+    }
+
     return (
         <div className="App">
             <div className='AppMenu None'>
@@ -226,7 +230,7 @@ function App() {
                 <button className='HeaderMenu' onClick={showMenu}><IoMenuOutline className='MenuShow' size={40} /><IoClose className='MenuClose None' size={40} /></button>
             </header>
             <div className="AppContainer">
-                <AppRoutes />
+                <AppRoutes onChildValueChange={handleScrollPos} />
                 <footer>
                     {!window.location.href.includes('admin') &&
                         <div className='FooterMap'>

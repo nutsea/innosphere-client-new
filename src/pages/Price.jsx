@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import '../styles/price.scss'
 import {fetchIntensives, fetchPrices} from "../http/innoAPI";
 
-const Price = () => {
+const Price = ({onChildValueChange}) => {
     const navigate = useNavigate()
     const [services, setServices] = useState(null)
     const [intesives, setIntensives] = useState(null)
@@ -49,6 +49,9 @@ const Price = () => {
 
     const showModal = () => {
         document.querySelector('.FeedbackModal').classList.remove('None')
+        onChildValueChange(window.scrollY)
+        document.querySelector('.AppContainer').setAttribute('style', `transform: translateY(-${window.scrollY}px)`)
+        document.querySelector('.AppContainer').classList.add('Lock')
     }
 
     return (
