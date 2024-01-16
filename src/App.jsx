@@ -189,7 +189,7 @@ function App() {
                     <li id='/about' onClick={handleNavigate}>О нас</li>
                     <li id='/price' onClick={handleNavigate}>Прайс-лист</li>
                     <li onClick={toGallery}>Галерея</li>
-                    <li>Конкурсы</li>
+                    <li id='/competition' onClick={handleNavigate}>Конкурсы</li>
                     <li>Благотворительность</li>
                 </ul>
             </div>
@@ -202,7 +202,7 @@ function App() {
                         <li id='/about' onClick={handleNavigate}>О нас</li>
                         <li id='/price' onClick={handleNavigate}>Прайс-лист</li>
                         <li onClick={toGallery}>Галерея</li>
-                        <li>Конкурсы</li>
+                        <li id='/competition' onClick={handleNavigate}>Конкурсы</li>
                         <li>Благотворительность</li>
                     </ul>
                 </nav>
@@ -233,7 +233,7 @@ function App() {
                                 <li id='/about' onClick={handleNavigate}>О нас</li>
                                 <li id='/price' onClick={handleNavigate}>Прайс-лист</li>
                                 <li onClick={toGallery}>Галерея</li>
-                                <li>Конкурсы</li>
+                                <li id='/competition' onClick={handleNavigate}>Конкурсы</li>
                                 <li>Благотворительность</li>
                             </ul>
                         </div>

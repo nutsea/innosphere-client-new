@@ -1,0 +1,12 @@
+@use 'base';
+
+.VideoComp {
+    border: none;
+    max-width: 100%;
+}
+
+.LinkLined {
+    &:hover {
+        text-decoration: underline;
+    }
+}
