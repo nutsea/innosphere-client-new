@@ -20,6 +20,7 @@ const Admin = () => {
     const navigate = useNavigate()
     const [password, setPassword] = useState('')
     const [isAdmin, setIsAdmin] = useState(false)
+    const [adminError, setAdminError] = useState(false)
     const [category, setCategory] = useState('')
     const [services, setServices] = useState()
     const [prices, setPrices] = useState()
@@ -49,6 +50,9 @@ const Admin = () => {
     const submitPassword = () => {
         if (password === process.env.REACT_APP_ADMIN) {
             setIsAdmin(true)
+            setAdminError(false)
+        } else {
+            setAdminError(true)
         }
     }
 
@@ -343,11 +347,15 @@ const Admin = () => {
             <h1 className="AdminSub">Панель администратора</h1>
             {!isAdmin ?
                 <>
-                <input className="AdminPassword" type="password" value={password} onChange={handlePassword} onKeyPress={(e) => {
-                    if (e.key === "Enter") {
-                        submitPassword();
-                    }
-                }} />
+                    <input className="AdminPassword" type="password" placeholder="Пароль" value={password} onChange={handlePassword} onKeyPress={(e) => {
+                        if (e.key === "Enter") {
+                            submitPassword();
+                        }
+                    }}
+                />
+                {adminError &&
+                    <div className="AdminError">Неверный пароль</div>
+                }
                 <button className="AdminSubmit" onClick={submitPassword}>ВОЙТИ</button>
                 </>
                 :
