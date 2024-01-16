@@ -37,7 +37,7 @@ const Admin = () => {
     const [changeId, setChangeId] = useState()
     const [toDelete, setToDelete] = useState()
     const [selectedOption, setSelectedOption] = useState(1);
-    
+
     const handleNavigate = (e) => {
         window.scrollTo({
             top: 0,
@@ -45,37 +45,37 @@ const Admin = () => {
         })
         navigate(`${e.target.id}`)
     }
-    
+
     const submitPassword = () => {
         if (password === process.env.REACT_APP_ADMIN) {
             setIsAdmin(true)
         }
     }
-    
+
     const handlePassword = (e) => {
         setPassword(e.target.value)
     }
-    
+
     const chooseCategory = (e) => {
         setCategory(e.target.id)
     }
-    
+
     const handleSelectChange = (event) => {
         setSelectedOption(event.target.value)
     }
-    
+
     const handleName = (e) => {
         setName(e.target.value)
     }
-    
+
     const handleText = (e) => {
         setText(e.target.value)
     }
-    
+
     const handlePrice = (e) => {
         setPrice(e.target.value)
     }
-    
+
     const handleImage = (e) => {
         setImage(e.target.files[0])
     }
@@ -93,10 +93,10 @@ const Admin = () => {
                     })
                     .reverse()
                     .join(' ') + ' г.'
-            )
+                    )
         }
     }
-    
+
     const clickBack = () => {
         setCategory('')
         setName('')
@@ -107,7 +107,7 @@ const Admin = () => {
         setImage(null)
         setChangeId(null)
     }
-    
+
     const createService = () => {
         if (!changeId) {
             if (name.length > 0 && text.length > 0) {
@@ -134,7 +134,7 @@ const Admin = () => {
             }
         }
     }
-    
+
     const createPrice = () => {
         if (!changeId) {
             if (name.length > 0 && text.length > 0 && price.length > 0) {
@@ -163,7 +163,7 @@ const Admin = () => {
             }
         }
     }
-    
+
     const createIntensive = () => {
         if (!changeId) {
             if (name.length > 0 && text.length > 0 && price.length > 0) {
@@ -205,7 +205,7 @@ const Admin = () => {
             })
         }
     }
-    
+
     const createRate = () => {
         if (name.length > 0 && text.length > 0 && date.length > 0) {
             addRate(date, name, text).then(() => {
@@ -219,7 +219,7 @@ const Admin = () => {
             })
         }
     }
-    
+
     const deleteService = (check) => {
         if (check) {
             setName('')
@@ -236,7 +236,7 @@ const Admin = () => {
             setToDelete(null)
         }
     }
-    
+
     const deletePrice = (check) => {
         if (check) {
             setName('')
@@ -254,7 +254,7 @@ const Admin = () => {
             setToDelete(null)
         }
     }
-    
+
     const deleteIntensive = (check) => {
         if (check) {
             setName('')
@@ -272,7 +272,7 @@ const Admin = () => {
             setToDelete(null)
         }
     }
-    
+
     const deleteRate = (check) => {
         if (check) {
             setName('')
@@ -289,7 +289,7 @@ const Admin = () => {
             setToDelete(null)
         }
     }
-    
+
     // eslint-disable-next-line
     const deleteImage = (check) => {
         if (check) {
@@ -305,7 +305,7 @@ const Admin = () => {
             setToDelete(null)
         }
     }
-    
+
     const itemToChange = (e) => {
         if (e.id) setChangeId(e.id)
         if (e.name) setName(e.name)
@@ -315,7 +315,7 @@ const Admin = () => {
         if (e.category_id) setSelectedOption(e.category_id)
         window.scrollTo({top: 0, behavior: 'smooth'})
     }
-    
+
     useEffect(() => {
         fetchServices().then(data => {
             setServices(data)
@@ -333,7 +333,7 @@ const Admin = () => {
             setImages(data)
         })
     }, [])
-    
+
     return (
         <div className="ContentContainer" style={{marginBottom: 30}}>
             <div className="TopLink">
@@ -343,31 +343,31 @@ const Admin = () => {
             <h1 className="AdminSub">Панель администратора</h1>
             {!isAdmin ?
                 <>
-                    <input className="AdminPassword" type="password" value={password} onChange={handlePassword} onKeyPress={(e) => {
-                                    if (e.key === "Enter") {
-                                        submitPassword();
-                                    }
-                                }} />
-                    <button className="AdminSubmit" onClick={submitPassword}>ВОЙТИ</button>
+                <input className="AdminPassword" type="password" value={password} onChange={handlePassword} onKeyPress={(e) => {
+                    if (e.key === "Enter") {
+                        submitPassword();
+                    }
+                }} />
+                <button className="AdminSubmit" onClick={submitPassword}>ВОЙТИ</button>
                 </>
                 :
                 <>
-                    {category === '' ?
+                {category === '' ?
                         <>
-                            <button className="AdminCategory" id="service" onClick={chooseCategory}>Услуги</button>
-                            <button className="AdminCategory" id="price" onClick={chooseCategory}>Прайс</button>
-                            <button className="AdminCategory" id="intensive" onClick={chooseCategory}>Интенсивы</button>
-                            <button className="AdminCategory" id="rate" onClick={chooseCategory}>Отзывы</button>
-                            <button className="AdminCategory" id="image" onClick={chooseCategory}>Фотогалерея</button>
+                        <button className="AdminCategory MaxWidth" id="service" onClick={chooseCategory}>Услуги</button>
+                        <button className="AdminCategory MaxWidth" id="price" onClick={chooseCategory}>Прайс</button>
+                        <button className="AdminCategory MaxWidth" id="intensive" onClick={chooseCategory}>Интенсивы</button>
+                        <button className="AdminCategory MaxWidth" id="rate" onClick={chooseCategory}>Отзывы</button>
+                        <button className="AdminCategory MaxWidth" id="image" onClick={chooseCategory}>Фотогалерея</button>
                         </>
                         :
                         (category === 'service') ?
                             <>
-                                <div className="AdminBack" onClick={clickBack}>Назад</div>
-                                <h3 className="AdminPanelSub">Услуги</h3>
-                                {services ?
+                            <div className="AdminBack" onClick={clickBack}>Назад</div>
+                            <h3 className="AdminPanelSub">Услуги</h3>
+                            {services ?
                                     <>
-                                        {toDelete &&
+                                    {toDelete &&
                                             <div className="ItemBox">
                                                 <div className="ItemTip" style={{marginTop: 0}}>Подтвердите действие</div>
                                                 <div>Удалить услугу "{toDelete.name}"</div>
@@ -375,41 +375,41 @@ const Admin = () => {
                                                 <button className="AdminCategory BoxBtn" id="image" onClick={() => deleteService(false)}>Отменить</button>
                                             </div>
                                         }
-                                        <div className="ItemBox">
-                                            {changeId ?
+                                    <div className="ItemBox">
+                                        {changeId ?
                                                 <>
-                                                    <div className="ItemTip" style={{marginTop: 0}}>Редактирование услуги</div>
+                                                <div className="ItemTip" style={{marginTop: 0}}>Редактирование услуги</div>
                                                 </>
                                                 :
                                                 <>
                                                 <div className="ItemTip" style={{marginTop: 0}}>Создание новой услуги</div>
                                                 </>
                                             }
-                                            <input className="AdminInput BoxInput" type="text" placeholder="Название услуги" value={name} onChange={handleName} />
-                                            <textarea className="AdminInput BoxInput" placeholder="Описание" value={text} onChange={handleText}></textarea>
-                                            <button className={`AdminCategory BoxBtn ${name.length > 0 && text.length > 0 ? '' : 'NonActive'}`} id="image" onClick={createService}><LuPlus size={20} /></button>
-                                        </div>
-                                        {services.map((item, i) => {
-                                            return (
-                                                <div className="ItemBox" key={item.id}>
-                                                    <div className="ItemBoxSub">Услуга {i + 1}</div>
-                                                    <div className="ItemTip">Название</div>
-                                                    <div className="ItemText">{item.name}</div>
-                                                    <div className="ItemTip">Описание</div>
-                                                    <div className="ItemText">{item.text}</div>
-                                                    <button className="ItemChange" onClick={() => {itemToChange(item)}} >Редактировать</button>
-                                                    <button
-                                                        className="ItemChange ItemDelete"
-                                                        onClick={() => {
-                                                            setToDelete(item)
-                                                            window.scrollTo({top: 0, behavior: 'smooth'})
-                                                        }}
-                                                        >
-                                                        Удалить
-                                                    </button>
-                                                </div>
+                                        <input className="AdminInput BoxInput" type="text" placeholder="Название услуги" value={name} onChange={handleName} />
+                                        <textarea className="AdminInput BoxInput" placeholder="Описание" value={text} onChange={handleText}></textarea>
+                                        <button className={`AdminCategory BoxBtn ${name.length > 0 && text.length > 0 ? '' : 'NonActive'}`} id="image" onClick={createService}><LuPlus size={20} /></button>
+                                    </div>
+                                    {services.map((item, i) => {
+                                        return (
+                                            <div className="ItemBox" key={item.id}>
+                                                <div className="ItemBoxSub">Услуга {i + 1}</div>
+                                                <div className="ItemTip">Название</div>
+                                                <div className="ItemText">{item.name}</div>
+                                                <div className="ItemTip">Описание</div>
+                                                <div className="ItemText">{item.text}</div>
+                                                <button className="ItemChange" onClick={() => {itemToChange(item)}} >Редактировать</button>
+                                                <button
+                                                    className="ItemChange ItemDelete"
+                                                    onClick={() => {
+                                                    setToDelete(item)
+                                                        window.scrollTo({top: 0, behavior: 'smooth'})
+                                                }}
+                                                    >
+                                                    Удалить
+                                                </button>
+                                            </div>
                                             )
-                                        })}
+                                    })}
                                     </>
                                     :
                                     <div className='LoaderBox LoaderBox2'>
@@ -420,9 +420,9 @@ const Admin = () => {
                             :
                             (category === 'price') ?
                                 <>
-                                    <div className="AdminBack" onClick={clickBack}>Назад</div>
-                                    <h3 className="AdminPanelSub">Прайс</h3>
-                                    {prices ?
+                                <div className="AdminBack" onClick={clickBack}>Назад</div>
+                                <h3 className="AdminPanelSub">Прайс</h3>
+                                {prices ?
                                         <>
                                         {toDelete &&
                                                 <div className="ItemBox">
@@ -487,9 +487,9 @@ const Admin = () => {
                                 :
                                 (category === 'intensive') ?
                                     <>
-                                        <div className="AdminBack" onClick={clickBack}>Назад</div>
-                                        <h3 className="AdminPanelSub">Интенсивы</h3>
-                                        {intensives ?
+                                    <div className="AdminBack" onClick={clickBack}>Назад</div>
+                                    <h3 className="AdminPanelSub">Интенсивы</h3>
+                                    {intensives ?
                                             <>
                                             {toDelete &&
                                                     <div className="ItemBox">
@@ -547,9 +547,9 @@ const Admin = () => {
                                     :
                                     (category === 'rate') ?
                                         <>
-                                            <div className="AdminBack" onClick={clickBack}>Назад</div>
-                                            <h3 className="AdminPanelSub">Отзывы</h3>
-                                            {rates ?
+                                        <div className="AdminBack" onClick={clickBack}>Назад</div>
+                                        <h3 className="AdminPanelSub">Отзывы</h3>
+                                        {rates ?
                                                 <>
                                                 {toDelete &&
                                                         <div className="ItemBox">
@@ -561,6 +561,7 @@ const Admin = () => {
                                                     }
                                                 <div className="ItemBox">
                                                     <div className="ItemTip" style={{marginTop: 0}}>Создание нового отзыва</div>
+                                                    <div className="ItemTip">Дата</div>
                                                     <input className="AdminInput BoxInput DateInput" type="date" placeholder="Дата" onChange={handleDate} />
                                                     <input className="AdminInput BoxInput" type="text" placeholder="Имя" value={name} onChange={handleName} />
                                                     <textarea className="AdminInput BoxInput" placeholder="Отзыв" value={text} onChange={handleText}></textarea>
@@ -598,11 +599,11 @@ const Admin = () => {
                                         :
                                         (category === 'image') &&
                                             <>
-                                                <div className="AdminBack" onClick={clickBack}>Назад</div>
-                                                <h3 className="AdminPanelSub">Фотогалерея</h3>
-                                                {images ?
+                                            <div className="AdminBack" onClick={clickBack}>Назад</div>
+                                            <h3 className="AdminPanelSub">Фотогалерея</h3>
+                                            {images ?
                                                 <>
-                                                    {toDelete &&
+                                                {toDelete &&
                                                             <div className="ItemBox">
                                                                 <div className="ItemTip" style={{marginTop: 0}}>Подтвердите действие</div>
                                                                 <div>Удалить фото "{toDelete.text}"</div>
@@ -610,31 +611,31 @@ const Admin = () => {
                                                                 <button className="AdminCategory BoxBtn" id="image" onClick={() => deleteImage(false)}>Отменить</button>
                                                             </div>
                                                         }
-                                                    <div className="ItemBox">
-                                                        <div className="ItemTip" style={{marginTop: 0}}>Добавление нового фото</div>
-                                                        <input className="AdminInput BoxInput" type="text" placeholder="Надпись" value={text} onChange={handleText} />
-                                                        <input className="AdminInput BoxInput DateInput" onChange={handleImage} type="file" />
-                                                        <button className={`AdminCategory BoxBtn ${text.length > 0 && image ? '' : 'NonActive'}`} id="image" onClick={createImage}><LuPlus size={20} /></button>
-                                                    </div>
-                                                    {images.map((item, i) => {
-                                                        return (
-                                                            <div className="ItemBox" key={item.id}>
-                                                                <div className="ItemBoxSub">Фото {i + 1}</div>
-                                                                <div className="ItemTip">Надпись</div>
-                                                                <div className="ItemText">{item.text}</div>
-                                                                <img className="ItemImg" src={`${process.env.REACT_APP_API_URL + item.name}`} alt="Фото" />
-                                                                <button
-                                                                    className="ItemChange ItemDelete"
-                                                                    onClick={() => {
-                                                                    setToDelete(item)
-                                                                        window.scrollTo({top: 0, behavior: 'smooth'})
-                                                                }}
-                                                                    >
-                                                                    Удалить
-                                                                </button>
-                                                            </div>
-                                                            )
-                                                    })}
+                                                <div className="ItemBox">
+                                                    <div className="ItemTip" style={{marginTop: 0}}>Добавление нового фото</div>
+                                                    <input className="AdminInput BoxInput" type="text" placeholder="Надпись" value={text} onChange={handleText} />
+                                                    <input className="AdminInput BoxInput DateInput" onChange={handleImage} type="file" />
+                                                    <button className={`AdminCategory BoxBtn ${text.length > 0 && image ? '' : 'NonActive'}`} id="image" onClick={createImage}><LuPlus size={20} /></button>
+                                                </div>
+                                                {images.map((item, i) => {
+                                                    return (
+                                                        <div className="ItemBox" key={item.id}>
+                                                            <div className="ItemBoxSub">Фото {i + 1}</div>
+                                                            <div className="ItemTip">Надпись</div>
+                                                            <div className="ItemText">{item.text}</div>
+                                                            <img className="ItemImg" src={`${process.env.REACT_APP_API_URL + item.name}`} alt="Фото" />
+                                                            <button
+                                                                className="ItemChange ItemDelete"
+                                                                onClick={() => {
+                                                                setToDelete(item)
+                                                                    window.scrollTo({top: 0, behavior: 'smooth'})
+                                                            }}
+                                                                >
+                                                                Удалить
+                                                            </button>
+                                                        </div>
+                                                        )
+                                                })}
                                                 </>
                                                 :
                                                 <div className='LoaderBox LoaderBox2'>
@@ -646,7 +647,7 @@ const Admin = () => {
                 </>
             }
         </div>
-    )
+        )
 }
 
 export default Admin

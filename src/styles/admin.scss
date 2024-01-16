@@ -50,6 +50,11 @@
     align-items: center;
     justify-content: center;
 }
+
+.MaxWidth {
+    max-width: calc(100% - 40px);
+}
+
 .AdminPanelSub {
     font-size: 24px;
     margin: 0;
