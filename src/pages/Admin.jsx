@@ -51,6 +51,8 @@ const Admin = () => {
         if (password === process.env.REACT_APP_ADMIN) {
             setIsAdmin(true)
             setAdminError(false)
+            const today = new Date()
+            localStorage.setItem('admin', today.toDateString())
         } else {
             setAdminError(true)
         }
@@ -321,6 +323,12 @@ const Admin = () => {
     }
 
     useEffect(() => {
+        const today = new Date()
+        if (localStorage.getItem('admin') === today.toDateString()) {
+            setIsAdmin(true)
+            setAdminError(false)
+        }
+        console.log(today.toDateString())
         fetchServices().then(data => {
             setServices(data)
         })
