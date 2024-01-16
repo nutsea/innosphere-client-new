@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    width: 0;
+    display: none;
+}
+
+ul {
+    display: flex;
+    flex-direction: row;
+}
+
+li {
+    list-style-type: none;
+}
+
+button {
+    background-color: unset;
+    border-radius: unset;
+    border: unset;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: unset;
+    color: unset;
+}
+
+body {
+    background-color: white;
+    margin: 0;
+    width: 100vw;
+}
+
+html {
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+@mixin hover($opacity: 0.8, $scale: 0.99) {
+    transition: opacity 0.1s linear, transform 0.1s linear;
+
+    &:hover {
+        opacity: $opacity;
+    }
+
+    &:active {
+        transform: scale($scale);
+    }
+}
+
+@mixin container() {
+    width: calc(100% - 100px);
+    padding: 40px 50px;
+
+    @media (max-width: 500px) {
+        width: calc(100% - 60px);
+        padding: 30px;
+    }
+}
+
+$green: #64A23E;
+$yellow: #FFC700;
+$green2: #64a23e80;
+$yellow2: #ffc70066;
+$orange: #2b7000;
+$text: #303030;
+$grey: #30303080;
+$none: #D9D9D9;
+$light: rgb(255, 255, 255, 0.9);
+
+.ContentContainer {
+    width: 100%;
+    min-height: calc(100vh - 60px);
+    margin-top: 60px;
+    color: $text;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.LoaderBox {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.LoaderBox2 {
+    margin-top: 20px;
+}
+
+.Loader {
+    box-sizing: border-box;
+    display: inline-block;
+    width: 50px;
+    height: 80px;
+    border-top: 5px solid $text;
+    border-bottom: 5px solid $text;
+    position: relative;
+    // background: linear-gradient(#FF3D00 30px, transparent 0) no-repeat;
+    background: linear-gradient($orange 30px, transparent 0) no-repeat;
+    background-size: 2px 40px;
+    background-position: 50% 0px;
+    animation: spinx 5s linear infinite;
+}
+
+.Loader:before,
+.Loader:after {
+    content: "";
+    width: 40px;
+    left: 50%;
+    height: 35px;
+    position: absolute;
+    top: 0;
+    transform: translatex(-50%);
+    background: rgba(30, 30, 30, 0.2);
+    border-radius: 0 0 20px 20px;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-position: 0 0px;
+    animation: lqt 5s linear infinite;
+}
+
+.Loader:after {
+    top: auto;
+    bottom: 0;
+    border-radius: 20px 20px 0 0;
+    animation: lqb 5s linear infinite;
+}
+
+@keyframes lqt {
+
+    0%,
+    100% {
+        // background-image: linear-gradient(#FF3D00 40px, transparent 0);
+        background-image: linear-gradient($orange 40px, transparent 0);
+        background-position: 0% 0px;
+    }
+
+    50% {
+        // background-image: linear-gradient(#FF3D00 40px, transparent 0);
+        background-image: linear-gradient($orange 40px, transparent 0);
+        background-position: 0% 40px;
+    }
+
+    50.1% {
+        // background-image: linear-gradient(#FF3D00 40px, transparent 0);
+        background-image: linear-gradient($orange 40px, transparent 0);
+        background-position: 0% -40px;
+    }
+}
+
+@keyframes lqb {
+    0% {
+        // background-image: linear-gradient(#FF3D00 40px, transparent 0);
+        background-image: linear-gradient($orange 40px, transparent 0);
+        background-position: 0 40px;
+    }
+
+    100% {
+        // background-image: linear-gradient(#FF3D00 40px, transparent 0);
+        background-image: linear-gradient($orange 40px, transparent 0);
+        background-position: 0 -40px;
+    }
+}
+
+@keyframes spinx {
+
+    0%,
+    49% {
+        transform: rotate(0deg);
+        background-position: 50% 36px;
+    }
+
+    51%,
+    98% {
+        transform: rotate(180deg);
+        background-position: 50% 4px;
+    }
+
+    100% {
+        transform: rotate(360deg);
+        background-position: 50% 36px;
+    }
+}
+
+.MB0 {
+    margin-bottom: 0 !important;
+}
+
+.MT5 {
+    margin-top: 5px !important;
+}
+
+.MT20 {
+    margin-top: 20px !important;
+}
+
+.MT30 {
+    margin-top: 30px !important;
+}
+
+.MT50 {
+    margin-top: 50px !important;
+}
+
+.PB0 {
+    padding-bottom: 0 !important;
+}
+
+.GreenLink {
+    text-decoration: underline;
+    padding: 0;
+    margin: 0;
+    font-family: Montserrat, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: $green;
+}
+
+.None {
+    display: none !important;
+}
+
+.NonActive {
+    background-color: $grey !important;
+    pointer-events: none;
+}
+
+@media (max-width: 700px) {
+    h1 {
+        font-size: 26px !important;
+    }
+
+    h2 {
+        font-size: 20px !important;
+    }
+
+    h3 {
+        font-size: 16px !important;
+    }
+}
+
+@media (max-width: 450px) {
+    h1 {
+        font-size: 23px !important;
+    }
+
+    button {
+        font-size: 16px !important;
+    }
+}

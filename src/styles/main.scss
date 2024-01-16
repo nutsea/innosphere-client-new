@@ -1,0 +1,518 @@
+@use 'base';
+
+.MainTop {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.MainSub {
+    font-size: 35px;
+    font-weight: 700;
+    margin: 40px 0 30px 0;
+}
+
+.MainContacts {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.MContact {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        height: 30px;
+        margin-right: 20px;
+    }
+
+    p {
+        font-size: 16px;
+        font-weight: 600;
+        margin: 0;
+    }
+}
+
+.MainPhotoContainer {
+    width: 100%;
+    height: 350px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .MainPhoto {
+        width: 100%;
+        height: 100%;
+        background-color: base.$none;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+
+        img {
+            width: 100%;
+            margin-top: 100px;
+        }
+    }
+}
+
+.MainInfo {
+    position: absolute;
+    left: 50px;
+    display: flex;
+    flex-direction: column;
+    background-color: base.$light;
+    padding: 10px;
+    width: 350px;
+    border-radius: 24px;
+
+    h3 {
+        margin: 10px 0 20px 20px;
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    ul {
+        margin: 0 0 20px 0;
+        padding: 0 0 0 20px;
+        display: flex;
+        flex-direction: column;
+
+        li {
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            font-weight: 500;
+            list-style-type: disc;
+        }
+
+        li+li {
+            margin-top: 10px;
+        }
+    }
+
+    button {
+        font-family: Montserrat, sans-serif;
+        background-color: base.$green;
+        color: white;
+        font-size: 16px;
+        font-weight: 500;
+        padding: 10px 0;
+        border-radius: 12px;
+        @include base.hover();
+    }
+}
+
+.MainDirector {
+    @include base.container();
+
+    h3 {
+        margin-top: 0;
+        font-size: 18px;
+    }
+}
+
+.DirectorInfo {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.DirectorPhoto {
+    height: 350px;
+    width: 300px;
+    background-color: base.$none;
+    border-radius: 24px;
+}
+
+.DirectorText {
+    width: calc(100% - 350px);
+
+    p {
+        margin: 0;
+        font-weight: 500;
+    }
+
+    p+p {
+        margin-top: 20px;
+    }
+}
+
+.MainServices {
+    @include base.container();
+    background-color: base.$green2;
+
+    h2 {
+        margin-top: 0;
+        font-size: 24px;
+    }
+}
+
+.ServicesContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.ServiceCard {
+    width: calc(48% - 40px);
+    padding: 20px;
+    margin-top: 30px;
+    background-color: white;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    h3 {
+        margin: 0;
+    }
+
+    p {
+        margin: 10px 0 0 0;
+        font-weight: 500;
+    }
+
+    button {
+        margin-top: 20px;
+        width: 100%;
+        padding: 10px 20px;
+        background-color: base.$text;
+        color: white;
+        font-family: Montserrat, sans-serif;
+        font-size: 20px;
+        font-weight: 500;
+        border-radius: 15px;
+        @include base.hover();
+    }
+}
+
+.MainTeam {
+    @include base.container();
+
+    h3 {
+        margin-top: 0;
+        font-size: 24px;
+    }
+
+    p {
+        margin: 0;
+        font-weight: 500;
+    }
+}
+
+.MainParents {
+    @include base.container();
+    background-color: base.$yellow2;
+
+    h2 {
+        margin-top: 0;
+        font-size: 24px;
+    }
+
+    p {
+        margin: 10px 0 0 0;
+        font-weight: 500;
+    }
+}
+
+.MainRates {
+    @include base.container();
+
+    h2 {
+        margin-top: 0;
+        font-size: 24px;
+    }
+}
+
+.RatesContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.RateCard {
+    width: calc(48% - 60px);
+    padding: 30px;
+    margin-top: 30px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    h3 {
+        margin: 10px 0 0 0;
+    }
+
+    h5 {
+        margin: 0;
+        opacity: 0.8;
+        font-weight: 500;
+    }
+
+    p {
+        margin: 10px 0 0 0;
+        font-weight: 500;
+    }
+}
+
+.MainGallery {
+    @include base.container();
+    background-color: base.$green2;
+
+    h2 {
+        margin-top: 0;
+        font-size: 24px;
+    }
+}
+
+.GalleryContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.GalleryPhoto {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    p {
+        font-size: 18px;
+        font-weight: 600;
+    }
+}
+
+.PhotoSlider {
+    width: 100%;
+    position: relative;
+}
+
+.PhotoBox {
+    width: 100%;
+    height: 420px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    border-radius: 15px;
+
+    img {
+        width: 100%;
+        border-radius: 15px;
+    }
+}
+
+.PhotoArrow {
+    height: 50px;
+    @include base.hover();
+    margin: 0;
+    padding: 0;
+    top: calc(50% - 25px);
+    position: absolute;
+
+    img {
+        height: 100%;
+        border-radius: 100px;
+    }
+}
+
+.ArrLeft {
+    left: -25px;
+}
+
+.ArrRight {
+    right: -25px;
+}
+
+.MainPhotoContainer2 {
+    display: none;
+}
+
+@media (max-width: 920px) {
+    .MainSub {
+        font-size: 26px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .MainContacts {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .MContact {
+        margin-left: 0;
+        width: fit-content;
+    }
+
+    .MContact+.MContact {
+        margin-top: 20px;
+    }
+
+    .GalleryPhoto {
+        width: 80%;
+    }
+
+    .PhotoBox {
+        height: 350px;
+    }
+}
+
+@media (max-width: 805px) {
+    .MainPhotoContainer .MainPhoto {
+        img {
+            margin-top: 0 !important;
+        }
+    }
+
+    .DirectorInfo {
+        flex-direction: column;
+    }
+
+    .DirectorText {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .ServicesContainer {
+        flex-direction: column;
+    }
+
+    .ServiceCard {
+        width: calc(100% - 40px);
+    }
+
+    .RatesContainer {
+        flex-direction: column;
+    }
+
+    .RateCard {
+        width: calc(100% - 60px);
+    }
+}
+
+@media (max-width: 630px) {
+    .MainPhotoContainer {
+        height: fit-content;
+    }
+
+    .PhotoBox {
+        height: 300px;
+    }
+}
+
+@media (max-width: 540px) {
+    .GalleryPhoto {
+        width: 100%;
+    }
+
+    .PhotoBox {
+        height: 250px;
+    }
+}
+
+@media (max-width: 470px) {
+    .MainPhotoContainer {
+        display: none;
+    }
+
+    .MainPhotoContainer2 {
+        display: block;
+    }
+
+    .MainPhotoContainer2 {
+        width: 100%;
+        // height: 350px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .MainPhoto2 {
+            width: 100%;
+            // height: 100%;
+            height: fit-content;
+            background-color: base.$none;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+
+            img {
+                width: 100%;
+            }
+        }
+    }
+
+    .MainInfo2 {
+        left: 50px;
+        display: flex;
+        flex-direction: column;
+        background-color: base.$green2;
+        padding: 10px;
+        width: 80%;
+        border-radius: 24px;
+        margin-bottom: 20px;
+
+        h3 {
+            margin: 10px 0 20px 20px;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        ul {
+            margin: 0 0 20px 0;
+            padding: 0 0 0 20px;
+            display: flex;
+            flex-direction: column;
+
+            li {
+                margin: 0;
+                padding: 0;
+                font-size: 16px;
+                font-weight: 500;
+                list-style-type: disc;
+            }
+
+            li+li {
+                margin-top: 10px;
+            }
+        }
+
+        button {
+            font-family: Montserrat, sans-serif;
+            background-color: base.$green;
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 10px 0;
+            border-radius: 12px;
+            @include base.hover();
+        }
+    }
+}
+
+@media (max-width: 370px) {
+    .DirectorPhoto {
+        width: 100%;
+    }
+
+    .MContact {
+        p {
+            width: 200px !important;
+        }
+    }
+}

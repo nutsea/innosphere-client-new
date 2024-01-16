@@ -1,0 +1,50 @@
+@use 'base';
+
+.TopLink {
+    @include base.container();
+    display: flex;
+    flex-direction: row;
+    font-weight: 500;
+}
+
+.Link {
+    color: base.$green;
+    text-decoration: underline;
+    cursor: pointer;
+    @include base.hover();
+}
+
+.AboutContainer {
+    @include base.container();
+    padding-top: 0 !important;
+}
+
+.AboutPanel {
+    width: calc(100% - 60px);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+
+    h1 {
+        font-size: 35px;
+        font-weight: 700;
+        margin-top: 0;
+    }
+
+    h2 {
+        margin-top: 0;
+        font-size: 24px;
+    }
+
+    p {
+        margin: 10px 0 0 0;
+        font-weight: 500;
+    }
+}
+
+@media (max-width: 500px) {
+    .AboutPanel {
+        width: calc(100% - 40px);
+        padding: 20px;
+    }
+}

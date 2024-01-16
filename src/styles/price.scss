@@ -1,0 +1,53 @@
+@use 'base';
+
+.PriceCard {
+    height: fit-content;
+    padding: 20px;
+    background-color: base.$green2;
+    border-radius: 15px;
+
+    h3 {
+        font-size: 18px;
+        margin-top: 0;
+    }
+
+    p {
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    h2 {
+        margin-top: 20px;
+        margin-bottom: 0;
+    }
+}
+
+.PriceCard+.PriceCard {
+    margin-top: 20px;
+}
+
+.IntensiveCard {
+    height: fit-content;
+    padding: 20px;
+    background-color: base.$yellow2;
+    border-radius: 15px;
+
+    h3 {
+        font-size: 18px;
+        margin-top: 0;
+    }
+
+    p {
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    h2 {
+        margin-top: 20px;
+        margin-bottom: 0;
+    }
+}
+
+.IntensiveCard+.IntensiveCard {
+    margin-top: 20px;
+}

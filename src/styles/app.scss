@@ -1,0 +1,376 @@
+@use 'base';
+
+.App {
+    font-family: Montserrat, sans-serif;
+}
+
+.AppHeader {
+    width: calc(100% - 100px);
+    height: 40px;
+    padding: 10px 50px;
+    background-color: base.$green;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.HeaderNav {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.HeaderLogo {
+    height: 100%;
+    cursor: pointer;
+    @include base.hover();
+
+    img {
+        height: 100%;
+    }
+}
+
+
+.NavList {
+    color: white;
+    font-weight: 500;
+
+    li {
+        cursor: pointer;
+        transition: transform .1s linear;
+
+        &:hover {
+            text-decoration: underline;
+        }
+
+        &:active {
+            transform: scale(0.98);
+        }
+    }
+
+    li+li {
+        margin-left: 30px;
+    }
+}
+
+.HeaderFeedback {
+    background-color: white;
+    color: base.$text;
+    font-family: Montserrat, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 12px;
+    @include base.hover();
+}
+
+.FooterMap {
+    @include base.container();
+    color: base.$text;
+
+    h2 {
+        margin-top: 0;
+        font-size: 24px;
+    }
+}
+
+.YandexMap {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    height: 400px;
+}
+
+.FooterContent {
+    @include base.container();
+    background-color: base.$green;
+}
+
+.FooterRow {
+    display: flex;
+    flex-direction: row;
+}
+
+.FooterCol {
+    width: calc(100% / 3);
+
+    h3 {
+        color: white;
+        margin-top: 0;
+    }
+}
+
+.FooterLogo {
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    @include base.hover();
+
+    img {
+        height: 100%;
+    }
+}
+
+.FLogoText {
+    margin-left: 20px;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.FooterNav {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    font-weight: 500;
+
+    li {
+        width: fit-content;
+        cursor: pointer;
+        transition: transform .1s linear;
+
+        &:hover {
+            text-decoration: underline;
+        }
+
+        &:active {
+            transform: scale(0.98);
+        }
+    }
+
+    li+li {
+        margin-top: 15px;
+    }
+}
+
+.FooterContact {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    img {
+        height: 20px;
+        margin-right: 20px;
+    }
+
+    a {
+        color: white;
+        font-size: 16px;
+        font-weight: 500;
+        transition: transform .1s linear;
+
+        &:hover {
+            text-decoration: underline;
+        }
+
+        &:active {
+            transform: scale(0.98);
+        }
+    }
+}
+
+.FooterContact+.FooterContact {
+    margin-top: 15px;
+}
+
+.FooterRights {
+    margin-top: 50px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 14px;
+    font-weight: 500;
+    width: 100%;
+    text-align: center;
+}
+
+.FeedbackModal {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.FeedbackBox {
+    max-width: 400px;
+    width: 90%;
+    background-color: white;
+    color: base.$text;
+    border-radius: 15px;
+    padding: 20px;
+    position: relative;
+
+    h3 {
+        margin: 10px 0 0 0;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.InputName {
+    width: calc(100% - 40px);
+    padding: 10px 20px;
+    outline: none;
+    border: solid 1px base.$text;
+    border-radius: 15px;
+    font-family: Montserrat, sans-serif;
+    font-size: 16px;
+    margin-top: 10px;
+    color: base.$text;
+    font-weight: 500;
+}
+
+.InputPhone {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: calc(100% - 40px);
+    padding: 10px 20px;
+    border: solid 1px base.$text;
+    border-radius: 15px;
+    margin-top: 10px;
+    font-weight: 500;
+
+    input {
+        border: none;
+        outline: none;
+        font-family: Montserrat, sans-serif;
+        font-size: 16px;
+        margin-left: 5px;
+        color: base.$text;
+        font-weight: 500;
+
+    }
+}
+
+.InputTextarea {
+    width: calc(100% - 40px);
+    padding: 10px 20px;
+    outline: none;
+    border: solid 1px base.$text;
+    border-radius: 15px;
+    font-family: Montserrat, sans-serif;
+    font-size: 16px;
+    margin-top: 10px;
+    color: base.$text;
+    font-weight: 500;
+    resize: vertical;
+    max-height: 200px;
+    min-height: 21px;
+}
+
+.CloseBtn {
+    color: base.$text;
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    right: 20px;
+    top: 10px;
+}
+
+.SendBtn {
+    font-family: Montserrat, sans-serif;
+    background-color: base.$green;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 0;
+    border-radius: 15px;
+    width: 100%;
+    margin-top: 6px;
+    color: white;
+    @include base.hover();
+    transition: background-color .1s linear
+}
+
+.AppMenu {
+    width: 100vw;
+    height: calc(100vh - 70px);
+    overflow-y: scroll;
+    padding-top: 70px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 9;
+    background-color: white;
+}
+
+.NavList2 {
+    color: base.$text;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 0;
+
+    li {
+        cursor: pointer;
+        transition: transform .1s linear;
+
+        &:hover {
+            text-decoration: underline;
+        }
+
+        &:active {
+            transform: scale(0.98);
+        }
+    }
+
+    li+li {
+        margin-top: 30px;
+    }
+}
+
+.HeaderMenu {
+    display: none;
+}
+
+@media (max-width: 970px) {
+
+    .NavList,
+    .HeaderFeedback {
+        display: none;
+    }
+
+    .HeaderMenu {
+        display: block;
+        color: white;
+    }
+}
+
+@media (max-width: 1100px) {
+    .FooterRow {
+        flex-direction: column;
+    }
+
+    .FooterCol {
+        width: 100%;
+    }
+
+    .FooterCol+.FooterCol {
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 500px) {
+    .AppHeader {
+        width: calc(100% - 60px) !important;
+        padding: 10px 30px !important;
+    }
+}

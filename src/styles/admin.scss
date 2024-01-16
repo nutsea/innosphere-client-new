@@ -1,0 +1,153 @@
+@use 'base';
+
+.AdminSub {
+    margin: 0 0 15px 0;
+    text-align: center;
+}
+
+.AdminPassword {
+    width: 398px;
+    max-width: calc(100% - 2px - 60px);
+    padding: 10px 20px;
+    outline: none;
+    border: solid 1px base.$text;
+    border-radius: 15px;
+    font-family: Montserrat, sans-serif;
+    font-size: 16px;
+    margin-top: 10px;
+    color: base.$text;
+    font-weight: 500;
+}
+
+.AdminSubmit {
+    font-family: Montserrat, sans-serif;
+    background-color: base.$text;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 0;
+    border-radius: 15px;
+    width: 440px;
+    max-width: calc(100% - 20px);
+    margin-top: 6px;
+    color: white;
+    @include base.hover();
+    transition: background-color .1s linear;
+}
+
+.AdminCategory {
+    font-family: Montserrat, sans-serif;
+    background-color: base.$text;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 0;
+    border-radius: 15px;
+    width: 440px;
+    margin-top: 10px;
+    color: white;
+    @include base.hover();
+    transition: background-color .1s linear;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.AdminPanelSub {
+    font-size: 24px;
+    margin: 0;
+    font-weight: 500;
+}
+
+.AdminInput {
+    width: 398px;
+    padding: 10px 20px;
+    outline: none;
+    border: solid 1px base.$text;
+    border-radius: 15px;
+    font-family: Montserrat, sans-serif;
+    font-size: 16px;
+    margin-top: 10px;
+    color: base.$text;
+    font-weight: 500;
+    resize: vertical;
+    max-height: 400px;
+    min-height: 21px;
+}
+
+.ItemBox {
+    margin-top: 10px;
+    width: 400px;
+    max-width: calc(100% - 60px);
+    padding: 10px 20px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 0 10px 0 rgb(0, 0, 0, 0.1);
+}
+
+.ItemBoxSub {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.ItemTip {
+    margin-top: 15px;
+    font-size: 14px;
+    opacity: 0.5;
+}
+
+.ItemChange {
+    font-family: Montserrat, sans-serif;
+    background-color: base.$text;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 0;
+    border-radius: 15px;
+    width: 100%;
+    margin-top: 6px;
+    color: white;
+    @include base.hover();
+    transition: background-color .1s linear;
+}
+
+.ItemDelete {
+    background-color: rgb(150, 50, 50);
+}
+
+.BoxInput {
+    width: calc(100% - 42px);
+}
+
+.BoxBtn {
+    width: 100%;
+}
+
+.AdminBack {
+    text-decoration: underline;
+    cursor: pointer;
+    @include base.hover();
+    margin-bottom: 10px;
+}
+
+.DateInput {
+    resize: none;
+}
+
+.SelectInput {
+    width: 100%;
+    padding: 10px 20px;
+    outline: none;
+    border: solid 1px base.$text;
+    border-radius: 15px;
+    font-family: Montserrat, sans-serif;
+    font-size: 16px;
+    margin-top: 10px;
+    color: base.$text;
+    font-weight: 500;
+    resize: vertical;
+    max-height: 200px;
+    min-height: 21px;
+}
+
+.ItemImg {
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 15px;
+}
