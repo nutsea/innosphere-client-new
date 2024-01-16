@@ -38,6 +38,10 @@ html {
     overflow-x: hidden;
 }
 
+.Lock {
+    position: fixed;
+}
+
 @mixin hover($opacity: 0.8, $scale: 0.99) {
     transition: opacity 0.1s linear, transform 0.1s linear;
 

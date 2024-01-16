@@ -17,6 +17,7 @@ function App() {
     // eslint-disable-next-line
     const [sendNumber, setSendNumber] = useState('')
     const [sendName, setSendName] = useState('')
+    const [scrollPos, setScrollPos] = useState(0)
 
     const handleNavigate = (e) => {
         window.scrollTo({
@@ -169,17 +170,32 @@ function App() {
     const closeModal = (e) => {
         if (!e.target.classList.contains('modal')) {
             document.querySelector('.FeedbackModal').classList.add('None')
+            document.querySelector('.AppContainer').classList.remove('Lock')
+            window.scrollTo(0, scrollPos)
+            document.querySelector('.AppContainer').setAttribute('style', 'transform: translateY(0)')
         }
     }
 
     const showModal = () => {
         document.querySelector('.FeedbackModal').classList.remove('None')
+        setScrollPos(window.scrollY)
+        document.querySelector('.AppContainer').setAttribute('style', `transform: translateY(-${window.scrollY}px)`)
+        document.querySelector('.AppContainer').classList.add('Lock')
     }
 
     const showMenu = () => {
         document.querySelector('.AppMenu').classList.toggle('None')
         document.querySelector('.MenuShow').classList.toggle('None')
         document.querySelector('.MenuClose').classList.toggle('None')
+        if (!document.querySelector('.AppMenu').classList.contains('None')) {
+            setScrollPos(window.scrollY)
+            document.querySelector('.AppContainer').setAttribute('style', `transform: translateY(-${window.scrollY}px)`)
+            document.querySelector('.AppContainer').classList.add('Lock')
+        } else {
+            document.querySelector('.AppContainer').classList.remove('Lock')
+            window.scrollTo(0, scrollPos)
+            document.querySelector('.AppContainer').setAttribute('style', 'transform: translateY(0)')
+        }
     }
 
     return (
@@ -209,53 +225,55 @@ function App() {
                 <button className='HeaderFeedback' onClick={showModal}>Обратная связь</button>
                 <button className='HeaderMenu' onClick={showMenu}><IoMenuOutline className='MenuShow' size={40} /><IoClose className='MenuClose None' size={40} /></button>
             </header>
-            <AppRoutes />
-            <footer>
-                {!window.location.href.includes('admin') &&
-                    <div className='FooterMap'>
-                        <h2>Мы на карте</h2>
-                        <iframe title='Карта' className='YandexMap' src="https://yandex.ru/map-widget/v1/?um=constructor%3A3f7798a40fc52ff81ff351f93a309bc61576924d56a14426c250f94c3a918b1a&amp;source=constructor" width="872" height="400"></iframe>
-                    </div>
-                }
-                <div className='FooterContent'>
-                    <div className='FooterRow'>
-                        <div className='FooterCol'>
-                            <div className='FooterLogo' id='/' onClick={handleNavigate}>
-                                <img src={logo} alt="Логотип" id='/' />
-                                <div className='FLogoText' id='/'>
-                                    <div id='/'>Научно-развивающий центр</div>
-                                    <div id='/'>«Инносфера»</div>
+            <div className="AppContainer">
+                <AppRoutes />
+                <footer>
+                    {!window.location.href.includes('admin') &&
+                        <div className='FooterMap'>
+                            <h2>Мы на карте</h2>
+                            <iframe title='Карта' className='YandexMap' src="https://yandex.ru/map-widget/v1/?um=constructor%3A3f7798a40fc52ff81ff351f93a309bc61576924d56a14426c250f94c3a918b1a&amp;source=constructor" width="872" height="400"></iframe>
+                        </div>
+                    }
+                    <div className='FooterContent'>
+                        <div className='FooterRow'>
+                            <div className='FooterCol'>
+                                <div className='FooterLogo' id='/' onClick={handleNavigate}>
+                                    <img src={logo} alt="Логотип" id='/' />
+                                    <div className='FLogoText' id='/'>
+                                        <div id='/'>Научно-развивающий центр</div>
+                                        <div id='/'>«Инносфера»</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='FooterCol'>
+                                <ul className='FooterNav'>
+                                    <li id='/about' onClick={handleNavigate}>О нас</li>
+                                    <li id='/price' onClick={handleNavigate}>Прайс-лист</li>
+                                    <li onClick={toGallery}>Галерея</li>
+                                    <li id='/competition' onClick={handleNavigate}>Конкурсы</li>
+                                    <li>Благотворительность</li>
+                                </ul>
+                            </div>
+                            <div className='FooterCol'>
+                                <h3>Контакты</h3>
+                                <div className='FooterContact'>
+                                    <img src={location} alt="Местоположение" />
+                                    <a href="https://yandex.ru/maps/?um=constructor%3A3f7798a40fc52ff81ff351f93a309bc61576924d56a14426c250f94c3a918b1a&source=constructorLink" target='_blank' rel='noreferrer'>г. Альметьевск, ул. Белоглазова 20</a>
+                                </div>
+                                <div className='FooterContact'>
+                                    <img src={phone} alt="Телефон" />
+                                    <a href="tel:+79871864641">+7 (987) 186-46-41</a>
+                                </div>
+                                <div className='FooterContact'>
+                                    <img src={email} alt="Почта" />
+                                    <a href="mailto">aaa@email.com</a>
                                 </div>
                             </div>
                         </div>
-                        <div className='FooterCol'>
-                            <ul className='FooterNav'>
-                                <li id='/about' onClick={handleNavigate}>О нас</li>
-                                <li id='/price' onClick={handleNavigate}>Прайс-лист</li>
-                                <li onClick={toGallery}>Галерея</li>
-                                <li id='/competition' onClick={handleNavigate}>Конкурсы</li>
-                                <li>Благотворительность</li>
-                            </ul>
-                        </div>
-                        <div className='FooterCol'>
-                            <h3>Контакты</h3>
-                            <div className='FooterContact'>
-                                <img src={location} alt="Местоположение" />
-                                <a href="https://yandex.ru/maps/?um=constructor%3A3f7798a40fc52ff81ff351f93a309bc61576924d56a14426c250f94c3a918b1a&source=constructorLink" target='_blank' rel='noreferrer'>г. Альметьевск, ул. Белоглазова 20</a>
-                            </div>
-                            <div className='FooterContact'>
-                                <img src={phone} alt="Телефон" />
-                                <a href="tel:+79871864641">+7 (987) 186-46-41</a>
-                            </div>
-                            <div className='FooterContact'>
-                                <img src={email} alt="Почта" />
-                                <a href="mailto">aaa@email.com</a>
-                            </div>
-                        </div>
+                        <div className='FooterRights'>© Все права защищены 2023, Инносфера</div>
                     </div>
-                    <div className='FooterRights'>© Все права защищены 2023, Инносфера</div>
-                </div>
-            </footer>
+                </footer>
+            </div>
             <div className='FeedbackModal None' onClick={closeModal}>
                 <div className='FeedbackBox modal'>
                     <button className='CloseBtn modal' onClick={closeModal}><IoClose size={30} /></button>
