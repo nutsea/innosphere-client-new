@@ -28,6 +28,10 @@ function App() {
         document.querySelector('.AppMenu').classList.add('None')
         document.querySelector('.MenuShow').classList.remove('None')
         document.querySelector('.MenuClose').classList.add('None')
+        document.querySelector('.AppContainer').classList.remove('Lock')
+        window.scrollTo(0, scrollPos)
+        document.querySelector('.AppContainer').setAttribute('style', 'transform: translateY(0)')
+
     }
 
     const toGallery = () => {
