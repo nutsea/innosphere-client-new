@@ -9,6 +9,8 @@ import logo from './assets/images/logo.png'
 import location from './assets/images/location.png'
 import phone from './assets/images/phone.png'
 import email from './assets/images/email.png'
+import whats from './assets/images/whats.png'
+import tg from './assets/images/tg.png'
 import AppRoutes from './AppRoutes'
 
 function App() {
@@ -20,6 +22,9 @@ function App() {
     const [scrollPos, setScrollPos] = useState(0)
 
     const handleNavigate = (e) => {
+        document.querySelector('.AppContainer').classList.remove('Lock')
+        window.scrollTo(0, scrollPos)
+        document.querySelector('.AppContainer').setAttribute('style', 'transform: translateY(0)')
         window.scrollTo({
             top: 0,
             left: 0
@@ -28,14 +33,13 @@ function App() {
         document.querySelector('.AppMenu').classList.add('None')
         document.querySelector('.MenuShow').classList.remove('None')
         document.querySelector('.MenuClose').classList.add('None')
-        document.querySelector('.AppContainer').classList.remove('Lock')
-        window.scrollTo(0, scrollPos)
-        document.querySelector('.AppContainer').setAttribute('style', 'transform: translateY(0)')
-
     }
 
     const toGallery = () => {
         navigate('/')
+        document.querySelector('.AppContainer').classList.remove('Lock')
+        window.scrollTo(0, scrollPos)
+        document.querySelector('.AppContainer').setAttribute('style', 'transform: translateY(0)')
         document.querySelector('.AppMenu').classList.add('None')
         document.querySelector('.MenuShow').classList.remove('None')
         document.querySelector('.MenuClose').classList.add('None')
@@ -275,6 +279,14 @@ function App() {
                                 <div className='FooterContact'>
                                     <img src={email} alt="Почта" />
                                     <a href="mailto">aaa@email.com</a>
+                                </div>
+                                <div className='FooterContact'>
+                                    <img src={whats} alt="Ватсап" />
+                                    <a href="http://wa.me/79871864641" target='_blank' rel='noreferrer'>Написать в Whatsapp</a>
+                                </div>
+                                <div className='FooterContact'>
+                                    <img src={tg} alt="Телеграм" />
+                                    <a href="http://t.me/Lanaleon83" target='_blank' rel='noreferrer'>Написать в Telegram</a>
                                 </div>
                             </div>
                         </div>

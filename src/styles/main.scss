@@ -457,6 +457,16 @@
         }
     }
 
+    .DirectorText, .MainTeam, .ServiceCard, .MainParents, .RateCard, .GalleryPhoto {
+        p {
+            font-size: 14px;
+        }
+    }
+
+    .RatesContainer {
+        margin-top: -20px;
+    }
+
     .MainInfo2 {
         left: 50px;
         display: flex;
@@ -482,7 +492,8 @@
             li {
                 margin: 0;
                 padding: 0;
-                font-size: 16px;
+//                font-size: 16px;
+                font-size: 14px;
                 font-weight: 500;
                 list-style-type: disc;
             }

@@ -374,3 +374,27 @@
         padding: 10px 30px !important;
     }
 }
+
+@media (max-width: 470px) {
+    .FooterLogo {
+        height: 50px;
+    }
+
+    .FLogoText {
+        font-size: 16px;
+    }
+
+    .FooterNav {
+        font-size: 14px;
+    }
+
+    .FooterContact {
+        a {
+            font-size: 14px;
+        }
+    }
+
+    .FooterRights {
+        font-size: 12px;
+    }
+}
