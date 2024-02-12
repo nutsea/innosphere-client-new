@@ -187,6 +187,10 @@ function App() {
             document.querySelector('.AppContainer').classList.remove('Lock')
             window.scrollTo(0, scrollPos)
             document.querySelector('.AppContainer').setAttribute('style', 'transform: translateY(0)')
+            setSendName('')
+            setSendNumber('')
+            setSendText('')
+            setPhoneNumber('')
         }
     }
 
@@ -311,7 +315,7 @@ function App() {
                 <div className='FeedbackBox modal'>
                     <button className='CloseBtn modal' onClick={closeModal}><IoClose size={30} /></button>
                     <h3 className='modal'>Получить консультацию</h3>
-                    <input className='InputName modal' type="text" placeholder='Ваше имя' onChange={handleName} />
+                    <input className='InputName modal' type="text" value={sendName} placeholder='Ваше имя' onChange={handleName} />
                     <div className='InputPhone modal'>
                         <span className='modal'>+7</span>
                         <input
