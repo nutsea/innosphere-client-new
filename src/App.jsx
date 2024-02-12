@@ -12,6 +12,7 @@ import email from './assets/images/email.png'
 import whats from './assets/images/whats.png'
 import tg from './assets/images/tg.png'
 import AppRoutes from './AppRoutes'
+import { sendToBot } from './http/innoAPI';
 
 function App() {
     const navigate = useNavigate()
@@ -19,6 +20,7 @@ function App() {
     // eslint-disable-next-line
     const [sendNumber, setSendNumber] = useState('')
     const [sendName, setSendName] = useState('')
+    const [sendText, setSendText] = useState('')
     const [scrollPos, setScrollPos] = useState(0)
 
     const handleNavigate = (e) => {
@@ -128,6 +130,10 @@ function App() {
         setSendName(e.target.value)
     }
 
+    const handleText = (e) => {
+        setSendText(e.target.value)
+    }
+
     const formatPhoneNumber = (e) => {
         const cleaned = ('' + e.target.value).replace(/\D/g, '')
         setSendNumber('7' + cleaned)
@@ -182,6 +188,13 @@ function App() {
             window.scrollTo(0, scrollPos)
             document.querySelector('.AppContainer').setAttribute('style', 'transform: translateY(0)')
         }
+    }
+
+    const sendMessage = async (e) => {
+        if (sendName && sendNumber) {
+            await sendToBot(sendName, sendNumber, sendText)
+        }
+        closeModal(e)
     }
 
     const showModal = () => {
@@ -313,8 +326,8 @@ function App() {
                             onKeyDown={handleBackspace}
                         />
                     </div>
-                    <textarea className='InputTextarea modal' type="text" placeholder='Что хотели бы узнать?' />
-                    <button className={`SendBtn modal ${sendName.length > 0 && sendNumber.length === 11 ? '' : 'NonActive'}`} onClick={closeModal}>Отправить заявку</button>
+                    <textarea className='InputTextarea modal' type="text" value={sendText} onChange={handleText} placeholder='Что хотели бы узнать?' />
+                    <button className={`SendBtn ${sendName.length > 0 && sendNumber.length === 11 ? '' : 'NonActive'}`} onClick={sendMessage}>Отправить заявку</button>
                 </div>
             </div>
         </div>

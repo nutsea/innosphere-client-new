@@ -107,3 +107,10 @@ export const destroyImage = async (id) => {
     const { data } = await $host.delete('api/image', {params: {id}})
     return data
 }
+
+// bot
+
+export const sendToBot = async (name, phone, message) => {
+    const { data } = await $host.post('api/bot', {name, phone, message})
+    return data
+}
