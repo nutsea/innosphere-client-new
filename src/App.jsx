@@ -235,8 +235,9 @@ function App() {
                     <li id='/price' onClick={handleNavigate}>Прайс-лист</li>
                     <li onClick={toGallery}>Галерея</li>
                     <li id='/competition' onClick={handleNavigate}>Конкурсы</li>
-                    <li>Благотворительность</li>
-                    <li>Обратная связь</li>
+                    <li id='/news' onClick={handleNavigate}>Новости</li>
+                    {/* <li>Благотворительность</li> */}
+                    <li onClick={showModal}>Обратная связь</li>
                 </ul>
             </div>
             <header className='AppHeader'>
@@ -249,9 +250,8 @@ function App() {
                         <li id='/price' onClick={handleNavigate}>Прайс-лист</li>
                         <li onClick={toGallery}>Галерея</li>
                         <li id='/competition' onClick={handleNavigate}>Конкурсы</li>
-                        <li id='/charity' onClick={handleNavigate}>Благотворительность</li>
+                        {/* <li id='/charity' onClick={handleNavigate}>Благотворительность</li> */}
                         <li id='/news' onClick={handleNavigate}>Новости</li>
-                        <li id='/company' onClick={handleNavigate}>О компании</li>
                     </ul>
                 </nav>
                 <button className='HeaderFeedback' onClick={showModal}>Обратная связь</button>
@@ -283,7 +283,8 @@ function App() {
                                     <li id='/price' onClick={handleNavigate}>Прайс-лист</li>
                                     <li onClick={toGallery}>Галерея</li>
                                     <li id='/competition' onClick={handleNavigate}>Конкурсы</li>
-                                    <li>Благотворительность</li>
+                                    {/* <li id='/charity' onClick={handleNavigate}>Благотворительность</li> */}
+                                    <li id='/news' onClick={handleNavigate}>Новости</li>
                                 </ul>
                             </div>
                             <div className='FooterCol'>

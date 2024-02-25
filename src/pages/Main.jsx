@@ -8,7 +8,8 @@ import kids1 from '../assets/images/kids1.jpg'
 //import kids2 from '../assets/images/kids2.jpg'
 //import kids3 from '../assets/images/kids3.jpg'
 // eslint-disable-next-line
-import kids from '../assets/images/kidsMain.jpeg'
+// import kids from '../assets/images/kidsMain.jpeg'
+import director from '../assets/images/director.jpg'
 
 import arrowL from '../assets/images/arrLeft.png'
 import arrowR from '../assets/images/arrRight.png'
@@ -127,7 +128,9 @@ const Main = () => {
             <div className='MainDirector'>
                 <h3>Директор Кузнецова Ландыш Айратовна</h3>
                 <div className='DirectorInfo'>
-                    <div className='DirectorPhoto'></div>
+                    <div className='DirectorPhoto'>
+                        <img src={director} alt="" />
+                    </div>
                     <div className='DirectorText'>
                         <p>Дорогие посетители нашего сайта, добро пожаловать в развивающий центр "Инносфера"! Мы осознаем, как трудно найти надежных специалистов для работы с неговорящими детьми, детьми с ОВЗ, РАС, ОНР, ЗПР и аналогичными особенностями. Именно поэтому мы приглашаем вас познакомиться с нашим центром, основанным на принципах нейропсихологии, нейропедагогики, логопедии, дефектологии и психологии.</p>
                         <p>Наши специалисты готовы предложить свои услуги в помощь для Вас и ваших детей с нестандартными подходами и авторскими программами для каждого ребёнка. Наша команда специалистов горит искренним интересом к своей профессии и всегда стремится к самосовершенствованию.</p>

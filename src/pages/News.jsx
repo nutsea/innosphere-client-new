@@ -42,7 +42,7 @@ const News = () => {
                     <div key={item.id} className="AboutPanel NewsContainer">
                         <div className="NewsDate">{formattedDate(item.createdAt)}</div>
                         <div dangerouslySetInnerHTML={{ __html: item.text }} />
-                        <div className="NewsImages">
+                        <div className="NewsImages MT10">
                             {images.map(image => {
                                 if (Number(image.news_code) === Number(item.id)) {
                                     return <img key={image.id} className="NewsImg" src={`${process.env.REACT_APP_API_URL + image.name}`} alt="Кр" />

@@ -52,7 +52,7 @@ const Admin = () => {
     const [description, setDescription] = useState('')
     const [teachers, setTeachers] = useState()
     const [documents, setDocuments] = useState()
-    const [document, setDocument] = useState(null)
+    const [documentFile, setDocumentFile] = useState(null)
 
     const handleChange = (value) => {
         setNewsText(value)
@@ -134,7 +134,7 @@ const Admin = () => {
     }
 
     const handleDocument = (e) => {
-        setDocument(e.target.files[0])
+        setDocumentFile(e.target.files[0])
     }
 
     const handleDate = (e) => {
@@ -248,12 +248,12 @@ const Admin = () => {
     }
 
     const createDocument = () => {
-        if (name.length > 0 && text.length > 0 && document) {
-            addDocument(name, document, text).then(() => {
+        if (name.length > 0 && text.length > 0 && documentFile) {
+            addDocument(name, documentFile, text).then(() => {
                 setDocuments(null)
                 setText('')
                 setName('')
-                setDocument(null)
+                setDocumentFile(null)
                 fetchDocuments().then(data => {
                     setDocuments(data)
                 })
@@ -264,7 +264,7 @@ const Admin = () => {
     const deleteDocument = (check) => {
         if (check) {
             setText('')
-            setDocument(null)
+            setDocumentFile(null)
             destroyDocument(toDelete.id).then(() => {
                 setDocuments(null)
                 setToDelete(null)
@@ -471,9 +471,9 @@ const Admin = () => {
         if (e.target.files.length === 1) {
             const text = document.querySelector(`.${e.target.id}Name`)
             text.innerText = e.target.files[0].name
-            unset.classList.remove('Showed')
-            set.classList.add('Showed')
-            clear.classList.add('Showed')
+            unset && unset.classList.remove('Showed')
+            set && set.classList.add('Showed')
+            clear && clear.classList.add('Showed')
             // setNewsImages(e.target.files[0])
             let files = []
             for (let i = 0; i < e.target.files.length; i++) {
@@ -919,7 +919,7 @@ const Admin = () => {
                                                                             <div className="NewsDate">{formattedDate(item.createdAt)}</div>
                                                                             <div className='DeleteNewsBtn' onClick={() => newsToDelete(item.id)}>Удалить</div>
                                                                         </div>
-                                                                        <div className='NewsToDelete' id={'news' + item.id}>
+                                                                        <div className='NewsToDelete' id={`news${item.id}`}>
                                                                             <div className='NewsToDeleteText'>Удалить новость?</div>
                                                                             <div className='NewsToDeleteBtns'>
                                                                                 <div className='NewsToDeleteBtn AdminCategory MaxWidth50 DeleteBtn' onClick={() => deleteNews(item.id)}>Удалить</div>
@@ -1040,7 +1040,7 @@ const Admin = () => {
                                                                     <input className="AdminInput BoxInput" type="text" placeholder="Название документа" value={name} onChange={handleName} />
                                                                     <input className="AdminInput BoxInput DateInput" onChange={handleDocument} type="file" />
                                                                     <textarea className="AdminInput BoxInput" placeholder="Описание" value={text} onChange={handleText}></textarea>
-                                                                    <button className={`AdminCategory BoxBtn ${name.length > 0 && text.length > 0 && document ? '' : 'NonActive'}`} id="image" onClick={createDocument}><LuPlus size={20} /></button>
+                                                                    <button className={`AdminCategory BoxBtn ${name.length > 0 && text.length > 0 && documentFile ? '' : 'NonActive'}`} id="image" onClick={createDocument}><LuPlus size={20} /></button>
                                                                 </div>
                                                                 {documents.map((item, i) => {
                                                                     return (
