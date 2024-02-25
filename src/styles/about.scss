@@ -42,6 +42,69 @@
     }
 }
 
+.TeacherContainer {
+    height: fit-content;
+    padding: 20px;
+    background-color: base.$green2;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+
+    img {
+        width: 300px;
+        height: max-content;
+        border-radius: 15px;
+        margin-right: 20px;
+    }
+}
+
+.TeacherContainer + .TeacherContainer {
+    margin-top: 20px;
+}
+
+.TeacherName {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.TeacherPosition, .TeacherEducation, .TeacherExperience, .TeacherDescription {
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 10px;
+
+    span {
+        opacity: 0.7;
+        font-weight: 400;
+    }
+}
+
+.DocumentItem + .DocumentItem {
+    margin-top: 20px;
+}
+
+.DocumentName {
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.DocumentDesc {
+    margin-top: 5px;
+}
+
+@media (max-width: 800px) {
+    .TeacherContainer {
+        flex-direction: column-reverse;
+
+        img {
+            // width: 200px;
+            max-width: 100%;
+            margin-top: 20px;
+            margin-right: 0;
+        }
+    }
+}
+
 @media (max-width: 500px) {
     .AboutPanel {
         width: calc(100% - 40px);
@@ -54,5 +117,9 @@
         p {
             font-size: 14px;
         }
+    }
+
+    .TeacherName {
+        font-size: 16px;
     }
 }

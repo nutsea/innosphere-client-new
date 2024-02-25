@@ -1,0 +1,118 @@
+.NewsContainer + .NewsContainer {
+    margin-top: 20px !important;
+}
+
+.NewsContainerAdmin {
+    margin-top: 20px;
+}
+
+.NewsDate {
+    font-size: 14px;
+    opacity: 0.5;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.NewsImages {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: -5px;
+    margin-top: -5px;
+}
+
+.NewsImg {
+    margin-left: 5px;
+    margin-top: 5px;
+    max-width: 100%;
+    width: 500px;
+    height: max-content;
+    border-radius: 15px;
+}
+
+.NewsImgAdmin {
+    margin-left: 5px;
+    margin-top: 5px;
+    max-width: calc(50% - 5px);
+    width: 500px;
+    height: max-content;
+    border-radius: 15px;
+}
+
+.FullRowNews {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.DeleteNewsBtn {
+    font-size: 14px;
+    // text-decoration: underline;
+    cursor: pointer;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    position: relative;
+    color: rgb(220, 50, 50);
+    font-weight: 500;
+
+    &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 0.5px;
+        background-color: rgb(220, 50, 50);
+        bottom: 0;
+        left: 0;
+    }
+}
+
+.NewsToDelete {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 10px;
+    color: rgb(220, 50, 50);
+    font-weight: 500;
+    font-size: 18px;
+    display: none;
+}
+
+.NewsToDeleteBtns {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.MaxWidth50 {
+    max-width: 49%;
+}
+
+.NewsToDeleteBtn {
+    cursor: pointer;
+    transition: opacity 0.2s linear, transform 0.2s linear;
+}
+
+.DeleteBtn {
+    background-color: rgb(139, 31, 31);
+}
+
+.ShowedNews {
+    display: block !important;
+}
+
+.NewsSub {
+    font-size: 35px;
+    font-weight: 700;
+    margin: 0 0 30px 0 !important;
+}
+
+@media (max-width: 920px) {
+    .NewsSub {
+        font-size: 26px;
+        width: 100%;
+        text-align: center;
+    }
+}

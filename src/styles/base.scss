@@ -59,8 +59,8 @@ html {
     padding: 40px 50px;
 
     @media (max-width: 500px) {
-        width: calc(100% - 60px);
-        padding: 30px;
+        width: calc(100% - 30px);
+        padding: 30px 15px;
     }
 }
 
@@ -200,6 +200,10 @@ $light: rgb(255, 255, 255, 0.9);
 
 .MT5 {
     margin-top: 5px !important;
+}
+
+.MT10 {
+    margin-top: 10px !important;
 }
 
 .MT20 {

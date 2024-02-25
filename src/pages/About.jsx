@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom'
 
 import '../styles/about.scss'
+import { fetchDocuments, fetchTeachers } from "../http/innoAPI";
+
+// const teachers = [
+//     {name: 'Иванова Ирина Владимировна', position: 'Директор', education: 'Высшее педагогическое образование, кандидат педагогических наук', experience: 'Стаж работы в образовании 20 лет', description: 'Основатель и руководитель научно-развивающего центра «Инносфера»'},
+//     {name: 'Смирнова Анна Владимировна', position: 'Заведующая', education: 'Высшее педагогическое образование, кандидат педагогических наук', experience: 'Стаж работы в образовании 20 лет', description: 'Заведующая научно-развивающего центра «Инносфера»'},
+//     {name: 'Петрова Ольга Владимировна', position: 'Учитель-логопед', education: 'Высшее педагогическое образование, кандидат педагогических наук', experience: 'Стаж работы в образовании 20 лет', description: 'Учитель-логопед научно-развивающего центра «Инносфера»'},
+// ]
 
 const About = () => {
     const navigate = useNavigate()
+    const [teachers, setTeachers] = useState([])
+    const [documents, setDocuments] = useState([])
 
     const handleNavigate = (e) => {
         window.scrollTo({
@@ -13,6 +22,11 @@ const About = () => {
         })
         navigate(`${e.target.id}`)
     }
+
+    useEffect(() => {
+        fetchTeachers().then(data => setTeachers(data))
+        fetchDocuments().then(data => setDocuments(data))
+    }, [])
 
     return (
         <section className="ContentContainer">
@@ -72,6 +86,40 @@ const About = () => {
                     <p>• &nbsp; Расширение словарного запаса и исключение из речи аграмматизмов.</p>
                     <p>В своей работе мы руководствуемся современной новейшей безмедикаментозной коррекцией нарушений различной этиологии. В своей работе мы используем современные аппараты нейрокоррекции как мозжечковую стимуляцию, транслингвальную стимуляцию, дыхательные упражнения, нейропсихологические упражнения Колгановой, занятия по развитию творческих задатков по методу Дж. Гилфорда и ДЖ. Рензулли, развитие эмоционального интеллекта.
                         Все наши коррекционные занятия направлены на развитие умений и навыков, преодоление трудностей поведения, общения, взаимодействия, коммуникации и т.д. Мы работаем с детьми совместно с их родителями, ставим глобальные цели и конкретные задачи по коррекции нарушений, социализации, развитию речи, интеллектуальных, коммуникативных навыков.</p>
+                    {teachers && teachers.length > 0 &&
+                        <>
+                            <h1 className="MT50">Педагогический состав</h1>
+                            {teachers.map((teacher, index) => {
+                                return (
+                                    <div key={index} className="TeacherContainer">
+                                        {teacher.img &&
+                                            <img src={process.env.REACT_APP_API_URL + teacher.img} alt="" />
+                                        }
+                                        <div className="TeacherInfo">
+                                            <div className="TeacherName">{teacher.name}</div>
+                                            <p className="TeacherPosition"><span>Должность: </span>{teacher.position}</p>
+                                            <p className="TeacherEducation"><span>Образование: </span>{teacher.education}</p>
+                                            <p className="TeacherExperience"><span>Опыт работы: </span>{teacher.experience}</p>
+                                            <p className="TeacherDescription">{teacher.description}</p>
+                                        </div>
+                                    </div>
+                                )
+                            })}
+                        </>
+                    }
+                    {documents && documents.length > 0 &&
+                        <>
+                            <h1 className="MT50">Документы и отчеты</h1>
+                            {documents.map((item, index) => {
+                                return (
+                                    <div key={index} className="DocumentItem">
+                                        <a className="DocumentName" href={process.env.REACT_APP_API_URL + item.document} rel="noreferrer" target="_blank">{item.name}</a>
+                                        <div className="DocumentDesc">{item.text}</div>
+                                    </div>
+                                )
+                            })}
+                        </>
+                    }
                 </div>
             </div>
         </section>

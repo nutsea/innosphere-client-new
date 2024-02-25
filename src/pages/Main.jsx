@@ -90,7 +90,7 @@ const Main = () => {
                     </div>
                     <div className="MContact">
                         <img src={phone} alt="Телефон" />
-                        <p>+7 (999) 999-99-99</p>
+                        <p>+7 (987) 186-46-41</p>
                     </div>
                 </div>
             </div>
