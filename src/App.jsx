@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
-import {useState} from 'react'
-import { IoClose, IoMenuOutline  } from "react-icons/io5";
+import { useState } from 'react'
+import { IoClose, IoMenuOutline } from "react-icons/io5";
 
 import './styles/base.scss'
 import './styles/app.scss'
@@ -24,6 +24,9 @@ function App() {
     const [scrollPos, setScrollPos] = useState(0)
 
     const handleNavigate = (e) => {
+        if (e.key && e.key !== 'Enter') {
+            return
+        }
         document.querySelector('.AppContainer').classList.remove('Lock')
         window.scrollTo(0, scrollPos)
         document.querySelector('.AppContainer').setAttribute('style', 'transform: translateY(0)')
@@ -37,7 +40,10 @@ function App() {
         document.querySelector('.MenuClose').classList.add('None')
     }
 
-    const toGallery = () => {
+    const toGallery = (e) => {
+        if (e.key && e.key !== 'Enter') {
+            return
+        }
         navigate('/')
         document.querySelector('.AppContainer').classList.remove('Lock')
         window.scrollTo(0, scrollPos)
@@ -182,6 +188,9 @@ function App() {
     }
 
     const closeModal = (e) => {
+        if (e.key && e.key !== 'Enter') {
+            return
+        }
         if (!e.target.classList.contains('modal')) {
             document.querySelector('.FeedbackModal').classList.add('None')
             document.querySelector('.AppContainer').classList.remove('Lock')
@@ -231,32 +240,56 @@ function App() {
         <div className="App">
             <div className='AppMenu None'>
                 <ul className='NavList2'>
-                    <li id='/about' onClick={handleNavigate}>О нас</li>
-                    <li id='/price' onClick={handleNavigate}>Прайс-лист</li>
-                    <li onClick={toGallery}>Галерея</li>
-                    <li id='/competition' onClick={handleNavigate}>Конкурсы</li>
-                    <li id='/news' onClick={handleNavigate}>Новости</li>
+                    <li id='/about' onClick={handleNavigate} onKeyDown={handleNavigate} tabIndex={0} aria-roledescription='О нас'>О нас</li>
+                    <li id='/price' onClick={handleNavigate} onKeyDown={handleNavigate} tabIndex={0} aria-roledescription='Прайс-лист'>Прайс-лист</li>
+                    <li onClick={toGallery} onKeyDown={toGallery} tabIndex={0} aria-roledescription='Фотогалерея'>Галерея</li>
+                    <li id='/competition' onClick={handleNavigate} onKeyDown={handleNavigate} tabIndex={0} aria-roledescription='Конкурсы'>Конкурсы</li>
+                    <li id='/news' onClick={handleNavigate} onKeyDown={handleNavigate} tabIndex={0} aria-roledescription='Новости'>Новости</li>
                     {/* <li>Благотворительность</li> */}
-                    <li onClick={showModal}>Обратная связь</li>
+                    <li onClick={showModal} onKeyDown={showModal} tabIndex={0} aria-roledescription='Обратная связь'>Обратная связь</li>
                 </ul>
             </div>
             <header className='AppHeader'>
                 <nav className='HeaderNav'>
-                    <div className='HeaderLogo' id='/' onClick={handleNavigate}>
+                    <div className='HeaderLogo' id='/' onClick={handleNavigate} onKeyDown={handleNavigate} tabIndex={0} aria-roledescription='На главную'>
                         <img src={logo} alt="Логотип" id='/' />
                     </div>
                     <ul className='NavList'>
-                        <li id='/about' onClick={handleNavigate}>О нас</li>
-                        <li id='/price' onClick={handleNavigate}>Прайс-лист</li>
-                        <li onClick={toGallery}>Галерея</li>
-                        <li id='/competition' onClick={handleNavigate}>Конкурсы</li>
+                        <li id='/about' onClick={handleNavigate} onKeyDown={handleNavigate} tabIndex={0} aria-roledescription='О нас'>О нас</li>
+                        <li id='/price' onClick={handleNavigate} onKeyDown={handleNavigate} tabIndex={0} aria-roledescription='Прайс-лист'>Прайс-лист</li>
+                        <li onClick={toGallery} onKeyDown={toGallery} tabIndex={0} aria-roledescription='Фотогалерея'>Галерея</li>
+                        <li id='/competition' onClick={handleNavigate} onKeyDown={handleNavigate} tabIndex={0} aria-roledescription='Конкурсы'>Конкурсы</li>
                         {/* <li id='/charity' onClick={handleNavigate}>Благотворительность</li> */}
-                        <li id='/news' onClick={handleNavigate}>Новости</li>
+                        <li id='/news' onClick={handleNavigate} onKeyDown={handleNavigate} tabIndex={0} aria-roledescription='Новости'>Новости</li>
                     </ul>
                 </nav>
-                <button className='HeaderFeedback' onClick={showModal}>Обратная связь</button>
-                <button className='HeaderMenu' onClick={showMenu}><IoMenuOutline className='MenuShow' size={40} /><IoClose className='MenuClose None' size={40} /></button>
+                <button className='HeaderFeedback' onClick={showModal} aria-roledescription='Обратная связь'>Обратная связь</button>
+                <button className='HeaderMenu' onClick={showMenu}><IoMenuOutline className='MenuShow' size={40} aria-roledescription='Открыть/закрыть меню' /><IoClose className='MenuClose None' size={40} /></button>
             </header>
+            <div className='FeedbackModal None' onClick={closeModal}>
+                <div className='FeedbackBox modal'>
+                    <button className='CloseBtn' onClick={closeModal} aria-roledescription='Закрыть окно записи'><IoClose size={30} /></button>
+                    <h3 className='modal'>Получить консультацию</h3>
+                    <input className='InputName modal' type="text" value={sendName} placeholder='Ваше имя' onChange={handleName} tabIndex={0} />
+                    <div className='InputPhone modal'>
+                        <span className='modal'>+7</span>
+                        <input
+                            className='modal'
+                            type="text"
+                            placeholder='(999) 999-99-99'
+                            maxLength="15"
+                            value={phoneNumber}
+                            onChange={(e) => {
+                                handlePhoneChange(e)
+                            }}
+                            onKeyDown={handleBackspace}
+                            tabIndex={0}
+                        />
+                    </div>
+                    <textarea className='InputTextarea modal' type="text" value={sendText} onChange={handleText} placeholder='Что хотели бы узнать?' tabIndex={0} />
+                    <button className={`SendBtn ${sendName.length > 0 && sendNumber.length === 11 ? '' : 'NonActive'}`} onClick={sendMessage} aria-roledescription='Отправить заявку'>Отправить заявку</button>
+                </div>
+            </div>
             <div className="AppContainer">
                 <AppRoutes onChildValueChange={handleScrollPos} />
                 <footer>
@@ -269,7 +302,7 @@ function App() {
                     <div className='FooterContent'>
                         <div className='FooterRow'>
                             <div className='FooterCol'>
-                                <div className='FooterLogo' id='/' onClick={handleNavigate}>
+                                <div className='FooterLogo' id='/' onClick={handleNavigate} onKeyDown={handleNavigate} tabIndex={0} aria-roledescription='На главную'>
                                     <img src={logo} alt="Логотип" id='/' />
                                     <div className='FLogoText' id='/'>
                                         <div id='/'>Научно-развивающий центр</div>
@@ -279,12 +312,12 @@ function App() {
                             </div>
                             <div className='FooterCol'>
                                 <ul className='FooterNav'>
-                                    <li id='/about' onClick={handleNavigate}>О нас</li>
-                                    <li id='/price' onClick={handleNavigate}>Прайс-лист</li>
-                                    <li onClick={toGallery}>Галерея</li>
-                                    <li id='/competition' onClick={handleNavigate}>Конкурсы</li>
+                                    <li id='/about' onClick={handleNavigate} onKeyDown={handleNavigate} tabIndex={0} aria-roledescription='О нас' role='button'>О нас</li>
+                                    <li id='/price' onClick={handleNavigate} onKeyDown={handleNavigate} tabIndex={0} aria-roledescription='Прайс-лист'>Прайс-лист</li>
+                                    <li onClick={toGallery} onKeyDown={toGallery} tabIndex={0} aria-roledescription='Фотогалерея'>Галерея</li>
+                                    <li id='/competition' onClick={handleNavigate} onKeyDown={handleNavigate} tabIndex={0} aria-roledescription='Конкурсы'>Конкурсы</li>
                                     {/* <li id='/charity' onClick={handleNavigate}>Благотворительность</li> */}
-                                    <li id='/news' onClick={handleNavigate}>Новости</li>
+                                    <li id='/news' onClick={handleNavigate} onKeyDown={handleNavigate} tabIndex={0} aria-roledescription='Новости'>Новости</li>
                                 </ul>
                             </div>
                             <div className='FooterCol'>
@@ -315,11 +348,11 @@ function App() {
                     </div>
                 </footer>
             </div>
-            <div className='FeedbackModal None' onClick={closeModal}>
+            {/* <div className='FeedbackModal None' onClick={closeModal}>
                 <div className='FeedbackBox modal'>
-                    <button className='CloseBtn modal' onClick={closeModal}><IoClose size={30} /></button>
+                    <button className='CloseBtn modal' onClick={closeModal} aria-roledescription='Закрыть окно записи'><IoClose size={30} /></button>
                     <h3 className='modal'>Получить консультацию</h3>
-                    <input className='InputName modal' type="text" value={sendName} placeholder='Ваше имя' onChange={handleName} />
+                    <input className='InputName modal' type="text" value={sendName} placeholder='Ваше имя' onChange={handleName} tabIndex={0} />
                     <div className='InputPhone modal'>
                         <span className='modal'>+7</span>
                         <input
@@ -332,12 +365,13 @@ function App() {
                                 handlePhoneChange(e)
                             }}
                             onKeyDown={handleBackspace}
+                            tabIndex={0}
                         />
                     </div>
-                    <textarea className='InputTextarea modal' type="text" value={sendText} onChange={handleText} placeholder='Что хотели бы узнать?' />
-                    <button className={`SendBtn ${sendName.length > 0 && sendNumber.length === 11 ? '' : 'NonActive'}`} onClick={sendMessage}>Отправить заявку</button>
+                    <textarea className='InputTextarea modal' type="text" value={sendText} onChange={handleText} placeholder='Что хотели бы узнать?' tabIndex={0} />
+                    <button className={`SendBtn ${sendName.length > 0 && sendNumber.length === 11 ? '' : 'NonActive'}`} onClick={sendMessage} aria-roledescription='Отправить заявку'>Отправить заявку</button>
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 }

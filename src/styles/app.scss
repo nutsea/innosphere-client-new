@@ -41,7 +41,12 @@
     color: white;
     font-weight: 500;
 
-    li {
+    li, button {
+        font-family: 'Montserrat', sans-serif;
+        color: white;
+        font-size: 16px;
+        font-weight: 500;
+        padding: 0;
         cursor: pointer;
         transition: transform .1s linear;
 
@@ -55,6 +60,10 @@
     }
 
     li+li {
+        margin-left: 30px;
+    }
+
+    button + button {
         margin-left: 30px;
     }
 }

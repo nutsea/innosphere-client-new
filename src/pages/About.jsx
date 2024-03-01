@@ -16,6 +16,9 @@ const About = () => {
     const [documents, setDocuments] = useState([])
 
     const handleNavigate = (e) => {
+        if (e.key && e.key !== 'Enter') {
+            return
+        }
         window.scrollTo({
             top: 0,
             left: 0
@@ -31,7 +34,7 @@ const About = () => {
     return (
         <section className="ContentContainer">
             <div className="TopLink">
-                <div className="Link" id="/" onClick={handleNavigate}>Главная</div>
+                <div className="Link" id="/" onClick={handleNavigate} onKeyDown={handleNavigate} tabIndex={0} aria-roledescription="На главную">Главная</div>
                 <div>&nbsp;/ О нас</div>
             </div>
             <div className="AboutContainer PB0">
