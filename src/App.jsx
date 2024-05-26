@@ -338,10 +338,10 @@ function App() {
                                     <img src={whats} alt="Ватсап" />
                                     <a href="http://wa.me/79872297205" target='_blank' rel='noreferrer'>Написать в Whatsapp</a>
                                 </div>
-                                <div className='FooterContact'>
+                                {/* <div className='FooterContact'>
                                     <img src={tg} alt="Телеграм" />
                                     <a href="http://t.me/Lanaleon83" target='_blank' rel='noreferrer'>Написать в Telegram</a>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                         <div className='FooterRights'>© Все права защищены 2023, Инносфера</div>
