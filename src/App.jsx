@@ -10,7 +10,7 @@ import location from './assets/images/location.png'
 import phone from './assets/images/phone.png'
 import email from './assets/images/email.png'
 import whats from './assets/images/whats.png'
-// import tg from './assets/images/tg.png'
+import tg from './assets/images/tg.png'
 import AppRoutes from './AppRoutes'
 import { sendToBot } from './http/innoAPI';
 
@@ -338,10 +338,10 @@ function App() {
                                     <img src={whats} alt="Ватсап" />
                                     <a href="http://wa.me/79872297205" target='_blank' rel='noreferrer'>Написать в Whatsapp</a>
                                 </div>
-                                {/* <div className='FooterContact'>
+                                <div className='FooterContact'>
                                     <img src={tg} alt="Телеграм" />
-                                    <a href="http://t.me/Lanaleon83" target='_blank' rel='noreferrer'>Написать в Telegram</a>
-                                </div> */}
+                                    <a href="https://t.me/innosphera_almet" target='_blank' rel='noreferrer'>Написать в Telegram</a>
+                                </div>
                             </div>
                         </div>
                         <div className='FooterRights'>© Все права защищены 2023, Инносфера</div>
