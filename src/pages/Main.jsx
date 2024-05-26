@@ -91,7 +91,7 @@ const Main = () => {
                     </div>
                     <div className="MContact">
                         <img src={phone} alt="Телефон" />
-                        <p>+7 (987) 186-46-41</p>
+                        <p>+7 (987) 229-72-05</p>
                     </div>
                 </div>
             </div>
