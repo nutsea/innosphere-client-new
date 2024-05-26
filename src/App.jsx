@@ -10,7 +10,7 @@ import location from './assets/images/location.png'
 import phone from './assets/images/phone.png'
 import email from './assets/images/email.png'
 import whats from './assets/images/whats.png'
-import tg from './assets/images/tg.png'
+// import tg from './assets/images/tg.png'
 import AppRoutes from './AppRoutes'
 import { sendToBot } from './http/innoAPI';
 
