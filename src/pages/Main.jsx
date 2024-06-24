@@ -126,7 +126,7 @@ const Main = () => {
                 </div>
             </div>
             <div className='MainDirector'>
-                <h3>Директор Кузнецова Ландыш Айратовна</h3>
+                <h3>Мартынова Гульнур Гараевна</h3>
                 <div className='DirectorInfo'>
                     <div className='DirectorPhoto'>
                         <img src={director} alt="" />
